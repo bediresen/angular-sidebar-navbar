@@ -13,6 +13,9 @@ import { PagesComponent } from './pages/pages.component';
 import { MediaComponent } from './media/media.component';
 import { SettingsComponent } from './settings/settings.component';
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
+import { HeaderComponent } from './header/header.component';
+import {CdkMenu, CdkMenuModule, CdkMenuTrigger} from "@angular/cdk/menu";
+import {OverlayModule} from "@angular/cdk/overlay";
 
 @NgModule({
   declarations: [
@@ -25,12 +28,16 @@ import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
     CoupensComponent,
     PagesComponent,
     MediaComponent,
-    SettingsComponent
+    SettingsComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    CdkMenu,
+    CdkMenuTrigger,
+    CdkMenuModule
   ],
   providers: [],
   bootstrap: [AppComponent]
