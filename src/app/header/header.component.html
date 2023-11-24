@@ -27,8 +27,8 @@
     <div class="head-menu">
 
       <div class="head-menu-item">
-        <button class="head-menu-item-btn ripple">
-<img src="assets/flags/turkey.jpg" class="flag" alt="flag">
+        <button class="head-menu-item-btn ripple" [cdkMenuTriggerFor]="languageOverlay">
+          <img src="/assets/flags/us.jpg" class="flag" alt="flag">
         </button>
       </div>
       <div class="head-menu-item">
@@ -37,7 +37,7 @@
         </button>
       </div>
       <div class="head-menu-item">
-        <button class="head-menu-item-btn ripple">
+        <button class="head-menu-item-btn ripple" [cdkMenuTriggerFor]="notifOverlay">
           <i class="far fa-bell menu-icon"></i>
         </button>
       </div>
@@ -49,7 +49,7 @@
     </div>
 
     <div class="head-user-avatar-container">
-      <div class="head-user-avatar">
+      <div class="head-user-avatar" [cdkMenuTriggerFor]="profileOverlay" >
 <img src="assets/firatabi.jpg" alt="user" class="user-avatar">
          <div class="circle-indicator pulse" ></div>
       </div>
@@ -66,4 +66,54 @@
       <i class="far fa-search search-icon"></i>
     </button>
   </div>
+</ng-template>
+
+<ng-template #languageOverlay>
+  <div class="overlay overlay-language overlay-fall" cdkMenu>
+    <ul>
+      <li *ngFor="let language of languages " cdkMenuItem>
+        <img [src]="'assets/flags/' +language.flag + '.jpg'" alt="flag">
+        <span>{{language.language}}</span>
+
+      </li>
+    </ul>
+  </div>
+</ng-template>
+
+<ng-template #notifOverlay>
+  <div class="overlay overlay-notification overlay-fall" cdkMenu>
+    <ul>
+      <li class="notification-head-container">
+       <div class="notification-head"> Notifications </div>
+        <span class="view-all-link">
+          <a>View All</a>
+        </span>
+      </li>
+      <li class="notification-message-container"
+      *ngFor="let notification of notifs" cdkMenuItem>
+        <i [class]="notification.icon"></i>
+        <div>
+          <div class="notification-subject">
+            {{notification.subject}}
+          </div>
+<p class="notification-desc">
+  {{notification.description}}
+</p>
+        </div>
+        </li>
+    </ul>
+  </div>
+</ng-template>
+
+<ng-template #profileOverlay>
+<div class="overlay overlay-user overlay-fall" cdkMenu>
+  <ul>
+    <li *ngFor="let item of userMenu" cdkMenuItem>
+      <a>
+        <i class="icon" [ngClass]="item.icon"></i>
+        <span>{{item.label}}</span>
+      </a>
+    </li>
+  </ul>
+</div>
 </ng-template>

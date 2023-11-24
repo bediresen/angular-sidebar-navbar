@@ -1,5 +1,6 @@
 import {Component, HostListener, Input, OnInit} from '@angular/core';
 import {style} from "@angular/animations";
+import {languages, notifications, userItems} from "./header-dummy-data";
 
 @Component({
   selector: 'app-header',
@@ -12,7 +13,11 @@ export class HeaderComponent implements OnInit{
   @Input() screenWidth = 0;
 
   canShowSearchHasOverlay = false;
+  selectedLanguage:any;
 
+  languages = languages;
+  notifs = notifications;
+  userMenu = userItems;
   constructor() { }
 
   @HostListener('window:resize' , ['$event'])
@@ -21,6 +26,7 @@ export class HeaderComponent implements OnInit{
   }
   ngOnInit(): void {
 this.checkCanShowSearchHasOverlay(window.innerWidth);
+this.selectedLanguage = this.languages[0];
   }
 
   getHeadClass(): string{
